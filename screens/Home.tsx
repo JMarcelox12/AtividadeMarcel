@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import styles from "../styles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -14,7 +14,13 @@ const Home = () => {
 
     return(
         <View style={[styles.container]}>
-            <Text>Bem-vindo a nossa primeira página</Text>
+            <View style={styles.cabecalho}></View>
+            <ScrollView>
+                <View>
+                    <Text style={styles.text}>bem-vindo ao meu novo home </Text>
+                </View>
+            </ScrollView>
+            <View style={styles.rodape}></View>
         </View>
     );
 }
