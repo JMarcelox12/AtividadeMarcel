@@ -1,24 +1,26 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+//import * as firebase from "firebase
+//import * as firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// cada produto do firebase deve ser importad separadamente
+//por exemplo auth de autenticação
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDu32VG8AMLiG_z4AiSctMXXKxPLqY4G44",
-  authDomain: "atividademarcel.firebaseapp.com",
-  projectId: "atividademarcel",
-  storageBucket: "atividademarcel.firebasestorage.app",
-  messagingSenderId: "211966850861",
-  appId: "1:211966850861:web:2df8bc7ad1929e713145a4",
-  measurementId: "G-V6G0VMY315"
+  apiKey: "AIzaSyBJhr9MG-ytfmpEvTF6CJHOlz0cHib0e7o",
+  authDomain: "jjay-9925d.firebaseapp.com",
+  projectId: "jjay-9925d",
+  storageBucket: "jjay-9925d.appspot.com",
+  messagingSenderId: "746285537745",
+  appId: "1:746285537745:web:532363cfe220e6105de8f0",
+  measurementId: "G-8K78KMX4WD"
 };
+
 
 // Initialize Firebase
 let app;
@@ -30,5 +32,5 @@ if (firebase.apps.length === 0) {
 
 const auth = firebase.auth()
 const firestore = firebase.firestore()
-const storage = firebase.storage()
+const storage = firebase.storage()    
 export { auth, firestore, storage };
