@@ -24,7 +24,7 @@
     boxOne:{
         height: 70,
         width: "45%",
-        backgroundColor: "blue",
+        backgroundColor: "#d70f0f",
         margin: 8,
         borderRadius: 10,
         alignItems: "center",
@@ -33,7 +33,7 @@
     boxTwo:{
         height: 70,
         width: 170,
-        backgroundColor: "red",
+        backgroundColor: "#d70f0f",
         marginLeft: 6,
         marginBottom: 5,
         borderRadius: 10,
@@ -44,7 +44,7 @@
     boxTree:{
         height: 110,
         width: 110,
-        backgroundColor: "green",
+        backgroundColor: "#d70f0f",
         marginLeft: 6,
         marginBottom: 10,
         borderRadius: 10,
@@ -54,7 +54,7 @@
     //Cadastro
     boxAuth: {
         borderWidth: 3,
-        borderColor: "black",
+        borderColor: "#d70f0f",
         borderRadius: 10,
         height: 50,
         width: "70%",
@@ -68,7 +68,7 @@
         marginTop: 40
     },
     button: {
-        backgroundColor: 'red',
+        backgroundColor: '#d70f0f',
         width: '60%',
         padding: 15,
         borderRadius: 10,
@@ -82,11 +82,11 @@
     },
     buttonOutline: {
         backgroundColor: 'white',
-        borderColor: 'red',
+        borderColor: '#d70f0f',
         borderWidth: 2
     },
     buttonOutlineText: {
-        color: 'red'
+        color: '#d70f0f'
     },
  })
 

@@ -27,7 +27,7 @@ function TabNavigator() {
           if (route.name === 'Home') {
             iconName = 'home';
           } else if (route.name === 'Menu') {
-            iconName = 'menu';
+            iconName = 'chatbox-ellipses';
           } else if (route.name === "Perfil"){
             iconName = "person";
           } else if (route.name === "Pesquisa"){
@@ -38,10 +38,10 @@ function TabNavigator() {
 
           return <Icon name={iconName} size={size} color={color} />;
         },headerStyle: {
-          backgroundColor: 'red', // Cor do cabeçalho
+          backgroundColor: '#d70f0f', // Cor do cabeçalho
           },
           tabBarStyle: {
-            backgroundColor: 'red', // Cor da barra de abas
+            backgroundColor: '#d70f0f', // Cor da barra de abas
           },
         tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'white',
@@ -62,7 +62,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
           headerStyle: {
-            backgroundColor: 'red', // Cor do cabeçalho
+            backgroundColor: '#d70f0f', // Cor do cabeçalho
           },
         }}>
         <Stack.Screen
