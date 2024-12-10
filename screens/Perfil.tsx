@@ -32,9 +32,9 @@ const Perfil = () => {
 
     return(
     <View style={[styles.container]}>
-        <Image source={require('../assets/JaPedeLogo.png')} style={{height: 150, width: "100%", margin: 10,}}/>
-
+        
         <ScrollView style={styles.scroll}>
+            <Image source={require('../assets/JaPedeLogo.png')} style={{height: 150, width: "100%"}}/>
 
             <View style={[styles.buttonContainer, {width: "100%"}]}>
 
@@ -83,10 +83,11 @@ const Perfil = () => {
                         <Image source={require("../assets/setinha.png")} style={styles.setaPerfil}/>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.boxPerfil} onPress={handleSignOut}>
+                <TouchableOpacity style={[styles.boxPerfil, {height: 90, borderColor: "#d70f0f", borderWidth: 3, marginVertical: 10}]} onPress={handleSignOut}>
                     <View style={[styles.containerPerfil]}>
-                        <Text style={styles.text}>Deslogar </Text>
-                        <Image source={require("../assets/setinha.png")} style={styles.setaPerfil}/>
+                        <Text style={[styles.text, {color: "#d70f0f"}]}>Deslogar </Text>
+                        <Image source={require("../assets/saida.png")}
+                         style={{height: "90%",width: 45,}}/>
                     </View>
                 </TouchableOpacity>
             </View>

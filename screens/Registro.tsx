@@ -14,7 +14,7 @@ const Registro = () => {
     const [dataFinal, setDataFinal] = useState ('');
     const [tipoUsuario, setTipoUsuario] = useState("usuario");
     const [formUsuario, setFormUsuario] = useState({});
-    const [imagePath, setImagePath] = useState('https://cdn-icons-png.flaticon.com/512/3318/3318274.png'); // Imagem padrão
+    const [imagePath, setImagePath] = useState('');
 
     const showPicker = () => {
         setPickerVisible(true);
@@ -126,7 +126,7 @@ const Registro = () => {
                         senha: formUsuario.senha,
                         cnpj: formUsuario.cnpj,
                         endereco: formUsuario.endereco,
-                        imagem: imagePath, // Imagem também para estabelecimento
+                        imagem: imagePath,
                         tipo: "estabelecimento",
                     });
                 } else if (tipoUsuario === "motorista") {
@@ -138,7 +138,7 @@ const Registro = () => {
                         datanasc: formUsuario.datanasc,
                         cnh: formUsuario.cnh,
                         cpf: formUsuario.cpf,
-                        imagem: imagePath, // Imagem para motorista
+                        imagem: imagePath,
                         tipo: "motorista",
                     });
                 }
@@ -171,7 +171,11 @@ const Registro = () => {
                             onCancel={hidePicker}
                             onConfirm={handleConfirm}
                         />
-                        <Text>Data de Nascimento: {dataFinal}</Text>
+                        {dataFinal === '' ? (
+                            <Text style={styles.boxAuthText}>Data de nascimento</Text>
+                        ) : (
+                            <Text style={styles.boxAuthText}>{dataFinal}</Text>
+                        )}
                         </TouchableOpacity>
                         <TextInput
                             placeholder="Endereço"
@@ -199,7 +203,11 @@ const Registro = () => {
                             style={styles.boxAuth}
                         />
                         <TouchableOpacity style={[styles.boxAuth]}onPress={selecionaFoto}>
-                            <Text>Escolher Foto</Text>
+                        {imagePath === '' ? (
+                            <Text style={styles.boxAuthText}>Selecionar imagem</Text>
+                        ) : (
+                            <Text style={[styles.boxAuthText, {alignItems: "center"}]}>imagem(1).png</Text>
+                        )}
                         </TouchableOpacity>
                     </>
                 );
@@ -227,11 +235,19 @@ const Registro = () => {
                             onCancel={hidePicker}
                             onConfirm={handleConfirm}
                         />
-                        <Text>Data de Nascimento: {dataFinal}</Text>
+                        {dataFinal === '' ? (
+                            <Text style={styles.boxAuthText}>Data de nascimento</Text>
+                        ) : (
+                            <Text style={styles.boxAuthText}>{dataFinal}</Text>
+                        )}
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.boxAuth} onPress={selecionaFoto}>
-                            <Text>Escolher Foto</Text>
+                        {imagePath === '' ? (
+                            <Text style={styles.boxAuthText}>Selecionar imagem</Text>
+                        ) : (
+                            <Text style={[styles.boxAuthText, {alignItems: "center"}]}>imagem(1).png</Text>
+                        )}
                         </TouchableOpacity>
                     </>
                 );

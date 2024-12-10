@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { createStackNavigator } from '@react-navigation/stack';
+import { useContext, useState } from 'react';
 
 //Páginas
 import Home from "./screens/Home";
@@ -19,14 +20,17 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-// Configurando o Bottom Tab Navigator
 function TabNavigator() {
+  const { user } = useContext(userContext);
+  const [tipoUsuario] = useState(user.tipo);
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
+        if(tipoUsuario === "usuario"){
           if (route.name === 'Home') {
             iconName = 'home';
           } else if (route.name === 'Conversas') {
@@ -38,6 +42,33 @@ function TabNavigator() {
           } else if (route.name === "Carrinho"){
             iconName = "cart";
           }
+        }else if(tipoUsuario === "estabelecimento"){
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Conversas') {
+            iconName = 'chatbox-ellipses';
+          } else if (route.name === "Perfil"){
+            iconName = "person";
+          } else if (route.name === "Pesquisa"){
+            iconName = "search";
+          } else if (route.name === "Carrinho"){
+            iconName = "cart";
+          }
+        }else if(tipoUsuario === "motorista"){
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Conversas') {
+            iconName = 'chatbox-ellipses';
+          } else if (route.name === "Perfil"){
+            iconName = "person";
+          } else if (route.name === "Pesquisa"){
+            iconName = "search";
+          } else if (route.name === "Carrinho"){
+            iconName = "cart";
+          }
+        }else{
+          alert("Error 404 found");
+        }
 
           return <Icon name={iconName} size={size} color={color} />;
         },headerStyle: {

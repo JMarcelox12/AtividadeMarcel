@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     width: "70%",
     backgroundColor: "white",
     margin: 10,
+    justifyContent: 'center',
   },
   buttonContainer: {
     width: "100%",
@@ -99,6 +100,12 @@ const styles = StyleSheet.create({
   buttonOutlineText: {
     color: "#d70f0f",
   },
+  boxAuthText: {
+    color: "gray",
+    fontSize: 15,
+    margin: 5,
+  },
+  //Perfis
   boxPerfil: {
     height: 60,
     width: "105%",
