@@ -1,11 +1,9 @@
-import { Text, View, TouchableOpacity, TextInput, ScrollView, Button, Image } from "react-native";
-import styles from "../styles";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import Modal from 'react-native-modal'
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-const Home = () => {
+const HomeEstabelecimento = () => {
     const[ModalVisible, setModalVisible] = useState(true);
 
     const navigation = useNavigation();
@@ -217,4 +215,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default HomeEstabelecimento;

@@ -7,13 +7,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useContext, useState } from 'react';
 
 //Páginas
-import Home from "./screens/Home";
+import HomeUsuario from "./screens/HomeUsuario";
 import Registro from './screens/Registro';
 import Login from "./screens/Login";
 import Mensagens from "./screens/Mensagens";
 import Perfil from "./screens/Perfil";
 import ListarMotorista from './screens/ListarMotorista';
 import ListarEstabelecimento from "./screens/ListarEstabelecimento";
+import HomeEstabelecimento from './screens/HomeEstabelecimento';
+import HomeMotorista from './screens/HomeMotorista';
 
 
 const Tab = createBottomTabNavigator(); 
@@ -22,7 +24,7 @@ const Stack = createStackNavigator();
 
 function TabNavigator() {
   const { user } = useContext(userContext);
-  const [tipoUsuario] = useState(user.tipo);
+  const [tipoUsuario] = useState(user?.tipo);
 
   return (
     <Tab.Navigator
@@ -82,7 +84,9 @@ function TabNavigator() {
         tabBarInactiveTintColor: 'white',
       })}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="HomeUsuario" component={HomeUsuario} />
+      <Tab.Screen name="HomeEstabelecimento" component={HomeEstabelecimento} />
+      <Tab.Screen name="HomeMotorista" component={HomeMotorista} />
       <Tab.Screen name="Pesquisa" component={Registro}/>
       <Tab.Screen name="Carrinho" component={Login}/>
       <Tab.Screen name="Perfil" component={Perfil}/>
@@ -105,7 +109,9 @@ export default function App() {
           component={TabNavigator}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Home"  component={Home}/> 
+        <Stack.Screen name="HomeUsuario"  component={HomeUsuario}/> 
+        <Stack.Screen name="HomeEstabelecimento"  component={HomeEstabelecimento}/> 
+        <Stack.Screen name="HomeMotorista"  component={HomeMotorista}/> 
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registro" component={Registro} />
         <Stack.Screen name="Perfil" component={Perfil}/>

@@ -10,22 +10,34 @@ const Login = () => {
 
     const navigation = useNavigation();
 
+    const irParaRegistro = () => {
+        navigation.navigate("Registro");
+    }
+
     useEffect(() => {
         const logout = auth.onAuthStateChanged((user: firebase.User | null) => {
             if (user) navigation.replace("Menu");
         })
     })
 
-    const irParaRegistro = () => {
-        navigation.navigate("Registro");
-    }
-
     const handleLogin = () => {
         auth
         .signInWithEmailAndPassword(email, senha)
-        .then((userCredentials: firebase.auth.UserCredential) => {
+        .then(async (userCredentials: firebase.auth.UserCredential) => {
             const user = userCredentials.user;
-            if (user) console.log('Logado como ', user.email);
+
+            const userDoc = await db.collection("users").doc(user.uid).get();
+            const tipoUsuario = userDoc.data()?.tipo;
+
+            if (tipoUsuario === "usuario") {
+                navigation.replace("UsuarioHome"); // Tela inicial do usuário comum
+              } else if (tipoUsuario === "estabelecimento") {
+                navigation.replace("EstabelecimentoHome"); // Tela inicial do estabelecimento
+              } else if (tipoUsuario === "motorista") {
+                navigation.replace("MotoristaHome"); // Tela inicial do motorista
+              } else {
+                alert("Tipo de usuário não reconhecido!");
+              }
         })
         .catch((error) => alert(error.message))
     }
