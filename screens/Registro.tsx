@@ -39,7 +39,7 @@ const Registro = () => {
 
     useEffect(() => {
         const logout = auth.onAuthStateChanged(user => {
-            if (user) navigation.replace("Home");
+            if (user) navigation.replace("HomeUsuario");
         })
     })
 
@@ -265,7 +265,7 @@ const Registro = () => {
                     <Image source={require('../assets/JaPedeLogo.png')} style={{height: 130, width: "70%", margin: 20,}}/>
                         <Picker
                             selectedValue={tipoUsuario}
-                            onValueChange={(itemValue) => setTipoUsuario(itemValue)}
+                            onValueChange={(itemValue) => handleInputChange("tipo",itemValue)}
                             style={styles.boxAuth}
                         >
                             <Picker.Item label="Usuário" value="usuario" />

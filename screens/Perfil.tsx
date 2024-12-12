@@ -83,6 +83,7 @@ const Perfil = () => {
                         <Image source={require("../assets/setinha.png")} style={styles.setaPerfil}/>
                     </View>
                 </TouchableOpacity>
+                
                 <TouchableOpacity style={[styles.boxPerfil, {height: 90, borderColor: "#d70f0f", borderWidth: 3, marginVertical: 10}]} onPress={handleSignOut}>
                     <View style={[styles.containerPerfil]}>
                         <Text style={[styles.text, {color: "#d70f0f"}]}>Deslogar </Text>

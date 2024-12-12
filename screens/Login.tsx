@@ -16,18 +16,19 @@ const Login = () => {
 
     useEffect(() => {
         const logout = auth.onAuthStateChanged((user: firebase.User | null) => {
-            if (user) navigation.replace("Menu");
+            if (user) navigation.replace("HomeUsuario");
         })
     })
 
     const handleLogin = () => {
         auth
         .signInWithEmailAndPassword(email, senha)
-        .then(async (userCredentials: firebase.auth.UserCredential) => {
+        .then(async userCredentials => {
             const user = userCredentials.user;
 
-            const userDoc = await db.collection("users").doc(user.uid).get();
-            const tipoUsuario = userDoc.data()?.tipo;
+            const tipoUsuario = user.tipo;
+
+            alert(tipoUsuario)
 
             if (tipoUsuario === "usuario") {
                 navigation.replace("UsuarioHome"); // Tela inicial do usuário comum

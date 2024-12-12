@@ -12,13 +12,13 @@ import "firebase/compat/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBJhr9MG-ytfmpEvTF6CJHOlz0cHib0e7o",
-  authDomain: "jjay-9925d.firebaseapp.com",
-  projectId: "jjay-9925d",
-  storageBucket: "jjay-9925d.appspot.com",
-  messagingSenderId: "746285537745",
-  appId: "1:746285537745:web:532363cfe220e6105de8f0",
-  measurementId: "G-8K78KMX4WD"
+  apiKey: "AIzaSyDu32VG8AMLiG_z4AiSctMXXKxPLqY4G44",
+  authDomain: "atividademarcel.firebaseapp.com",
+  projectId: "atividademarcel",
+  storageBucket: "atividademarcel.firebasestorage.app",
+  messagingSenderId: "211966850861",
+  appId: "1:211966850861:web:2df8bc7ad1929e713145a4",
+  measurementId: "G-V6G0VMY315"
 };
 
 
