@@ -6,14 +6,9 @@ import Modal from 'react-native-modal'
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const HomeUsuario = () => {
-    const[ModalVisible, setModalVisible] = useState(true);
 
     const navigation = useNavigation();
     //const Drawer = createDrawerNavigator();
-
-    const mudaModal = () => {
-        setModalVisible(!ModalVisible); 
-    }
 
     const irParaRegistro = () => {
         navigation.navigate('Registro');
@@ -193,25 +188,7 @@ const HomeUsuario = () => {
                     </TouchableOpacity>
             </ScrollView>
             </View>
-
-
-        <Modal 
-        isVisible={ModalVisible}
-        animationInTiming={1000}
-        animationOut={'bounceOut'}
-        animationOutTiming={1000}
-        backdropOpacity={0.8}
-        onBackdropPress={mudaModal}
-        >
-        <View style={styles.container}>
-          <TouchableOpacity onPress={mudaModal} style={{height: "105%", width: "100%", alignItems:"center"}}>
-            <Image 
-              source={require('../assets/logo.png')} 
-              style={{height: '110%', width: '120%'}}
-            />
-          </TouchableOpacity>
-        </View>
-      </Modal>
+            
       </ScrollView>
         </View>
     );

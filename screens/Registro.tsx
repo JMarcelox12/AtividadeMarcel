@@ -12,7 +12,7 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 const Registro = () => {
     const [PickerVisible, setPickerVisible] = useState (false);
     const [dataFinal, setDataFinal] = useState ('');
-    const [tipoUsuario, setTipoUsuario] = useState("usuario");
+    const [tipoUsuario] = useState("usuario");
     const [formUsuario, setFormUsuario] = useState({});
     const [imagePath, setImagePath] = useState('');
 
@@ -39,7 +39,15 @@ const Registro = () => {
 
     useEffect(() => {
         const logout = auth.onAuthStateChanged(user => {
-            if (user) navigation.replace("HomeUsuario");
+            if(tipoUsuario === "usuario"){
+                navigation.replace("HomeUsuario");
+            } else if( tipoUsuario === "estabelecimento"){
+                navigation.replace("HomeEstabelecimento");
+            } else if( tipoUsuario === "motorista"){
+                navigation.replace("HomeMotorista")
+            } else {
+                alert("Error:/ tipoUsuario");
+            }
         })
     })
 
@@ -268,7 +276,7 @@ const Registro = () => {
                             onValueChange={(itemValue) => handleInputChange("tipo",itemValue)}
                             style={styles.boxAuth}
                         >
-                            <Picker.Item label="Usuário" value="usuario" />
+                            <Picker.Item label="Usuário" value="usuario"/>
                             <Picker.Item label="Estabelecimento" value="estabelecimento" />
                             <Picker.Item label="Motorista" value="motorista" />
                         </Picker>

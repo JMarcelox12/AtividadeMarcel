@@ -1,11 +1,12 @@
 //Ferramentas
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { createStackNavigator } from '@react-navigation/stack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from './firebase';
+import { View, Text, Button} from 'react-native';
 
 //Páginas
 import HomeUsuario from "./screens/HomeUsuario";
@@ -23,7 +24,34 @@ import Inicio from './screens/Inicio';
 
 const Tab = createBottomTabNavigator(); 
 const Stack = createStackNavigator();
+const navigation = useNavigation();
 
+useEffect(() => {
+  //verifica se usuário está logado ou não
+  const VerificaLogin = auth.onAuthStateChanged((user) => {
+      if (user) {
+          console.log("Usuário logado:", user.email);
+          navigation.replace("Home");
+      } else {
+          console.log("Nenhum usuário logado.");
+          navigation.replace("Login");
+      }
+  });
+
+  return () => VerificaLogin();
+}, []);
+
+const ScreenOne = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Tela 1</Text>
+  </View>
+);
+
+const ScreenTwo = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Tela 2</Text>
+  </View>
+);
 
 function TabNavigator() {
   const [tipoUsuario] = useState(auth.currentUser?.tipo || "usuario");
@@ -116,6 +144,20 @@ export default function App() {
         <Stack.Screen name="Perfil" component={Perfil}/>
         <Stack.Screen name="Mensagens" component={Mensagens}/>
         <Stack.Screen name="Listar Estabelecimentos" component={ListarEstabelecimento}/>
+        <Stack.Screen 
+            name="ScreenOne" 
+            component={ScreenOne} 
+            options={{
+                title: 'Tela 1',
+                headerRight: () => (
+                    <View style={{ flexDirection: 'row', marginRight: 10 }}>
+                        <Button title="Botão 1" onPress={() => alert('Botão 1 clicado!')} />
+                        <Button title="Botão 2" onPress={() => alert('Botão 2 clicado!')} />
+                    </View>
+                ),
+            }}
+        />
+        <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
         <Stack.Screen name="Listar Motoristas" component={ListarMotorista}/>
       </Stack.Navigator>
     </NavigationContainer>

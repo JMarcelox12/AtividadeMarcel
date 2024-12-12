@@ -2,7 +2,7 @@ import styles from "../styles";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { View, TouchableOpacity, Text, KeyboardAvoidingView, TextInput, Image, ScrollView} from "react-native";
-import { auth } from "../firebase";
+import { auth, firestore } from "../firebase";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -26,16 +26,22 @@ const Login = () => {
         .then(async userCredentials => {
             const user = userCredentials.user;
 
-            const tipoUsuario = user.tipo;
+        const userDoc = await firestore.collection('users').doc(user.uid).get();
+            if (!userDoc.exists) {
+            alert("User data not found!");
+            return;
+            }
+
+        const { tipo: tipoUsuario } = userDoc.data();
 
             alert(tipoUsuario)
 
             if (tipoUsuario === "usuario") {
-                navigation.replace("UsuarioHome"); // Tela inicial do usuário comum
+                navigation.replace("UsuarioHome"); 
               } else if (tipoUsuario === "estabelecimento") {
-                navigation.replace("EstabelecimentoHome"); // Tela inicial do estabelecimento
+                navigation.replace("EstabelecimentoHome"); 
               } else if (tipoUsuario === "motorista") {
-                navigation.replace("MotoristaHome"); // Tela inicial do motorista
+                navigation.replace("MotoristaHome");
               } else {
                 alert("Tipo de usuário não reconhecido!");
               }
